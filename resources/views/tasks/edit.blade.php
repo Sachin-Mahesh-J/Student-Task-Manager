@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form action="{{ route('tasks.update', $task) }}" method="POST" class="bg-white p-6 rounded shadow-md w-full max-w-lg">
+    <form action="{{ route('tasks.update', $task) }}" method="POST" class="bg-white p-6 rounded shadow-md w-full">
         @csrf
         @method('PUT')
 

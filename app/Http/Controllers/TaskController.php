@@ -30,12 +30,20 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
             'subject_id' => 'required|exists:subjects,id',
+            'status' => 'required|in:pending,completed',
         ]);
 
-        Task::create($request->all());
+        Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'due_date' => $request->due_date,
+            'subject_id' => $request->subject_id,
+            'status' => $request->status,
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
+
 
     public function edit(Task $task)
     {
@@ -50,12 +58,20 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
             'subject_id' => 'required|exists:subjects,id',
+            'status' => 'required|in:pending,completed',
         ]);
 
-        $task->update($request->all());
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'due_date' => $request->due_date,
+            'subject_id' => $request->subject_id,
+            'status' => $request->status,
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }
+
 
     public function destroy(Task $task)
     {

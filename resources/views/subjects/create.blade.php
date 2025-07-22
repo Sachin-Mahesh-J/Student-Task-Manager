@@ -1,3 +1,4 @@
+{{--
 @extends('layouts.app')
 
 @section('title', 'Add New Subject')
@@ -8,7 +9,9 @@
             📘 Add New Subject
         </h1>
 
-        {{-- Show validation errors --}}
+        --}}
+{{-- Show validation errors --}}{{--
+
         @if ($errors->any())
             <div class="alert alert-error shadow-lg mb-6">
                 <div>
@@ -25,7 +28,9 @@
         <form action="{{ route('subjects.store') }}" method="POST" class="space-y-6">
             @csrf
 
-            {{-- Subject Name --}}
+            --}}
+{{-- Subject Name --}}{{--
+
             <div class="form-control">
                 <label class="label">
                     <span class="label-text font-semibold">Subject Name</span>
@@ -40,7 +45,9 @@
                 >
             </div>
 
-            {{-- Subject Code --}}
+            --}}
+{{-- Subject Code --}}{{--
+
             <div class="form-control">
                 <label class="label">
                     <span class="label-text font-semibold">Subject Code</span>
@@ -55,7 +62,9 @@
                 >
             </div>
 
-            {{-- Description --}}
+            --}}
+{{-- Description --}}{{--
+
             <div class="form-control">
                 <label class="label">
                     <span class="label-text font-semibold">Description</span>
@@ -68,7 +77,9 @@
                 >{{ old('description') }}</textarea>
             </div>
 
-            {{-- Buttons --}}
+            --}}
+{{-- Buttons --}}{{--
+
             <div class="flex justify-between items-center pt-4">
                 <a href="{{ route('subjects.index') }}" class="btn btn-outline btn-sm">
                     ← Back to List
@@ -80,3 +91,61 @@
         </form>
     </div>
 @endsection
+--}}
+
+@extends('layouts.app')
+
+@section('title', 'Add New Subject')
+
+@section('content')
+    <h1 class="text-2xl font-bold mb-4">📘 Add New Subject</h1>
+
+    @if ($errors->any())
+        <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>• {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('subjects.store') }}" method="POST" class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
+        @csrf
+
+        <div class="mb-4">
+            <label class="block font-semibold mb-1">Subject Name</label>
+            <input
+                type="text"
+                name="name"
+                value="{{ old('name') }}"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="e.g., Mathematics"
+                required
+            >
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-semibold mb-1">Subject Code</label>
+            <input
+                type="text"
+                name="code"
+                value="{{ old('code') }}"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="e.g., MATH101"
+                required
+            >
+        </div>
+
+
+        <div class="flex justify-between items-center">
+            <a href="{{ route('subjects.index') }}" class="text-gray-600 hover:text-blue-600 text-sm">
+                ← Back to List
+            </a>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                ➕ Create Subject
+            </button>
+        </div>
+    </form>
+@endsection
+

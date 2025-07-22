@@ -1,5 +1,4 @@
-<footer class="footer footer-center p-4 bg-base-200 text-base-content">
-    <aside>
-        <p>© {{ now()->year }} Student Task Manager — All rights reserved</p>
-    </aside>
+{{-- Footer --}}
+<footer class="bg-blue-300 text-center py-4 text-sm text-base-content/70">
+    &copy; 2025 Student Task Manager. All rights reserved.
 </footer>

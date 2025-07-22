@@ -14,6 +14,7 @@ class Task extends Model
         'description',
         'due_date',
         'subject_id',
+        'status',
     ];
 
     public function subject()
